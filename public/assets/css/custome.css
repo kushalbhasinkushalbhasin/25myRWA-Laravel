@@ -1,0 +1,23 @@
+@media (min-width: 992px) {
+    .main-menu{
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
+
+.navbar-container{
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.pl-50{
+    padding-left: 50px;
+}
+
+.pr-50{
+    padding-right: 50px;
+}
+
+.text-center{
+    text-align: center;
+}
