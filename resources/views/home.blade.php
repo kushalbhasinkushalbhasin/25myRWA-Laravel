@@ -11,16 +11,17 @@
      @foreach($sliders as $slider)
         <div class="box px-0 d-flex flex-column">
           <div class="bg-cover custom-vh-04 d-flex align-items-center" style="background-image: url('{{app('client')->client_website_url.'/RWAVendor/clients/homeslider/'.$slider['banner_image']}}')">
-            @if(0)
+
             <div class="container">
               <div class="row">
                 <div class="col-lg-5 offset-lg-7 col-md-6 offset-md-3 col-sm-8 offset-sm-2 mt-xl-1 py-8 pt-lg-12">
-                  <div class="bg-white  px-7 pt-6 pb-4 rounded-lg ml-lg-n1 mb-xl-15" data-animate="flipInX">
-                    <div class="mt-n7 position-absolute">
-                      <span class="badge badge-orange">Featured</span>
-                    </div>
-                    <h2 class="my-0"><a href="single-property-1.html" class="fs-30 lh-12 text-dark hover-primary">Villa on Hollywood Boulevard</a></h2>
-                    <p class="my-3 font-weight-500 text-gray-light lh-15">1421 San Pedro St, Los Angeles</p>
+                  <div class="bg-white  px-7 pt-6 pb-4 rounded-lg ml-lg-n1 mb-xl-15 op-8" data-animate="flipInX">
+                    <!--<div class="mt-n7 position-absolute">-->
+                    <!--  <span class="badge badge-orange">Featured</span>-->
+                    <!--</div>-->
+                    <h2 class="my-0"><a href="#" class="fs-30 lh-12 text-dark hover-primary">{{$slider['banner_title']}}</a></h2>
+                    <p class="my-3 font-weight-500 text-gray-light lh-15">{{$slider['banner_content']}}</p>
+                    @if(0)
                     <p class="fs-14 font-weight-500 letter-spacing-087 text-primary text-uppercase lh-15 mb-1">
                       For Sale</p>
                     <p class="fs-22 font-weight-bold text-heading">$1.250.000</p>
@@ -44,11 +45,12 @@
                         2300 Sq.Ft
                       </li>
                     </ul>
+                    @endif
                   </div>
                 </div>
               </div>
             </div>
-            @endif
+
           </div>
         </div>
       @endforeach
@@ -57,23 +59,25 @@
 @endif
   
 @if(in_array('home-contact-us', $home_sections))
-    <section class="bg-gray-02 pt-9 pb-9" id="contact-us-sections">
+    <section class="bg-gray-02 bg-black pt-9 pb-9" id="contact-us-sections" style='background-color:#000!important;'>
       <div class="container">
-        <h2 class="text-center text-dark line-height-base">
+        <h2 class="text-center text-white line-height-base">
           Contact Us
         </h2>
         <span class="heading-divider mx-auto mb-7"></span>
-        <div class="card">
-          <div class="card-body">
+        <h5 class="text-center text-white">Drop us a line!</h5>
+        <div class="row">
+          <div class="col-md-2"></div>
+            <div class='col-md-8'>
             <form action="{{ route('save_contact_us') }}" method="post">
               @csrf
               <div class="row">
 
-                  <div class="col-md-6">
+                  <div class="col-md-12 mt-5">
                       <input
                           type="text"
                           placeholder="Name"
-                          class="form-control form-control-lg border-0 @error('name') is-invalid @enderror"
+                          class="form-control form-control-lg home-contact-form-control  @error('name') is-invalid @enderror"
                           name="name"
                           value="{{ old('name') }}"
                           required
@@ -85,11 +89,11 @@
                       @enderror
                   </div>
 
-                  <div class="col-md-6">
+                  <div class="col-md-12 mt-5">
                       <input
                           type="text"
                           placeholder="Email"
-                          class="form-control form-control-lg border-0 @error('email') is-invalid @enderror"
+                          class="form-control form-control-lg home-contact-form-control @error('email') is-invalid @enderror"
                           name="email"
                           value="{{ old('email') }}"
                           required
@@ -104,7 +108,7 @@
                   <div class="col-md-12 mt-5">
                       <textarea
                           placeholder="Message"
-                          class="form-control form-control-lg border-0 @error('message') is-invalid @enderror"
+                          class="form-control form-control-lg home-contact-form-control @error('message') is-invalid @enderror"
                           name="message"
                           rows="5"
                           required
@@ -119,7 +123,7 @@
                   <div class="col-md-12 mt-5">
                       <input
                           type="checkbox"
-                          class="form-check-input ml-2 @error('newsletter') is-invalid @enderror"
+                          class="form-check-input home-contact-form-control ml-2 @error('newsletter') is-invalid @enderror"
                           id="newsletter"
                           name="newsletter"
                           {{ old('newsletter') ? 'checked' : '' }}
@@ -145,8 +149,9 @@
                   </div>
 
               </div>
-          </form>
-
+            </form>
+            </div>
+            <div class="col-md-2"></div>
           </div>
         </div>
       </div>
