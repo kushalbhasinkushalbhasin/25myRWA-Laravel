@@ -8,7 +8,7 @@ use App\Models\TblAdervitiserModule;
 use App\Models\HomeFlashBanner;
 use Illuminate\Support\Facades\Validator;
 use App\Models\TrkHomeSections;
-
+use App\Models\NewsLetters;
 
 class HomeController extends Controller
 {
@@ -26,8 +26,12 @@ class HomeController extends Controller
         $sliders     = HomeFlashBanner::where('status', 1)
             ->where('client_id', app('client')->id)
             ->get()->toArray();
+            
+        $newsLetters = NewsLetters::where('status', 1)
+                        ->where('client_id', app('client')->id)
+                        ->first();
 
-        return view('home', compact('advertisers', 'sliders', 'home_sections'));
+        return view('home', compact('advertisers', 'sliders', 'home_sections','newsLetters'));
     }
 
     public function saveContactUs(Request $request)

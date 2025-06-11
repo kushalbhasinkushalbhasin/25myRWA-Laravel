@@ -10,47 +10,19 @@
     <div class="slick-slider mx-0" data-slick-options='{"slidesToShow": 1, "autoplay":false,"dots":false,"arrows":false}'>
      @foreach($sliders as $slider)
         <div class="box px-0 d-flex flex-column">
-          <div class="bg-cover custom-vh-04 d-flex align-items-center" style="background-image: url('{{app('client')->client_website_url.'/RWAVendor/clients/homeslider/'.$slider['banner_image']}}')">
-
-            <div class="container">
-              <div class="row">
-                <div class="col-lg-5 offset-lg-7 col-md-6 offset-md-3 col-sm-8 offset-sm-2 mt-xl-1 py-8 pt-lg-12">
-                  <div class="bg-white  px-7 pt-6 pb-4 rounded-lg ml-lg-n1 mb-xl-15 op-8" data-animate="flipInX">
-                    <!--<div class="mt-n7 position-absolute">-->
-                    <!--  <span class="badge badge-orange">Featured</span>-->
-                    <!--</div>-->
-                    <h2 class="my-0"><a href="#" class="fs-30 lh-12 text-dark hover-primary">{{$slider['banner_title']}}</a></h2>
-                    <p class="my-3 font-weight-500 text-gray-light lh-15">{{$slider['banner_content']}}</p>
-                    @if(0)
-                    <p class="fs-14 font-weight-500 letter-spacing-087 text-primary text-uppercase lh-15 mb-1">
-                      For Sale</p>
-                    <p class="fs-22 font-weight-bold text-heading">$1.250.000</p>
-                    <ul class="list-inline d-flex mb-0 flex-wrap border-top justify-content-between pt-4 mr-n2">
-                      <li class="list-inline-item text-gray font-weight-500 fs-13 d-flex align-items-center mr-2" data-toggle="tooltip" title="3 Bedroom">
-                        <svg class="icon icon-bedroom fs-18 text-primary mr-2">
-                          <use xlink:href="#icon-bedroom"></use>
-                        </svg>
-                        3 Bedrooms
-                      </li>
-                      <li class="list-inline-item text-gray font-weight-500 fs-13 d-flex align-items-center mr-2" data-toggle="tooltip" title="3 Bathrooms">
-                        <svg class="icon icon-shower fs-18 text-primary mr-2">
-                          <use xlink:href="#icon-shower"></use>
-                        </svg>
-                        3 Bathrooms
-                      </li>
-                      <li class="list-inline-item text-gray font-weight-500 fs-13 d-flex align-items-center mr-2" data-toggle="tooltip" title="Size">
-                        <svg class="icon icon-square fs-18 text-primary mr-2">
-                          <use xlink:href="#icon-square"></use>
-                        </svg>
-                        2300 Sq.Ft
-                      </li>
-                    </ul>
-                    @endif
-                  </div>
-                </div>
+          <div class="bg-cover custom-vh-04 d-flex align-items-center position-relative" style="background-image: url('{{ app('client')->client_website_url.'/RWAVendor/clients/homeslider/'.$slider['banner_image'] }}')">
+            
+            <!-- Black overlay -->
+            <div class="position-absolute w-100 h-100" style="background-color: rgba(0, 0, 0, 0.5); top: 0; left: 0; z-index: 1;"></div>
+        
+            <div class="container position-relative z-index-2 text-center ">
+              <div class="mxw-751"> 
+                <h1 class="text-white fs-30 fs-md-60 lh-15 font-weight-normal mt-10 mb-13 fadeInRight animated slider-text" data-animate="fadeInRight">
+                  {{$slider['banner_content']}}
+                </h1>
               </div>
             </div>
-
+            
           </div>
         </div>
       @endforeach
@@ -61,7 +33,7 @@
 @if(in_array('home-contact-us', $home_sections))
     <section class="bg-gray-02 bg-black pt-9 pb-9" id="contact-us-sections" style='background-color:#000!important;'>
       <div class="container">
-        <h2 class="text-center text-white line-height-base">
+        <h2 class="text-center  line-height-base head-contact-us">
           Contact Us
         </h2>
         <span class="heading-divider mx-auto mb-7"></span>
@@ -145,7 +117,7 @@
                         {{ session('success') }}
                       </div>
                     @endif
-                      <button type="submit" class="btn btn-primary btn-lg float-right">Send Message</button>
+                      <button type="submit" class="btn btn-drk-orange btn-lg float-right">Send Message</button>
                   </div>
 
               </div>
@@ -1422,18 +1394,16 @@
     </div>
   </div> --}}
   
-@if( !empty($newsLetters) ) {
+@if( !empty($newsLetters) ) 
 
   
     <div class="modal fade login-register login-register-modal" id="news-letter-modal" tabindex="-1" role="dialog" aria-labelledby="login-register-modal" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered mxw-571" role="document">
 
-          <img src="RWAVendor/uploads/newsletter/{{$newsLetters->image}}" />
+          <img src="RWAVendor/clients/newsletter/{{$newsLetters->image}}" />
 
       </div>
     </div>
-
-    @endsection
     
     @section('after_scripts')
         
