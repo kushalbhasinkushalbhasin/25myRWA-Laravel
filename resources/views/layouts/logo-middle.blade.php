@@ -64,7 +64,7 @@
                             <ul class="dropdown-menu pt-3 pb-0 pb-xl-3" aria-labelledby="navbar-item-pages">
                                 @foreach ($menu['submenu'] as $submenu)
                                     <li class="dropdown-item {{$submenu['children']?'dropdown dropright':''}} ">
-                                        <a  class="dropdown-link {{$submenu['children']?'dropdown-toggle':''}} " href="{{empty($submenu['children'])?$submenu['target_path']: '#'}}" {{empty($submenu['children'])?'': ' data-toggle="dropdown"'}} >
+                                        <a  class="dropdown-link {{$submenu['children']?'dropdown-toggle':''}} "  {{$submenu['new_tab']==1? 'target="_blank"': ''}} href="{{empty($submenu['children'])?$submenu['target_path']: '#'}}" {{empty($submenu['children'])?'': ' data-toggle="dropdown"'}} >
                                             {{ $submenu['display_text'] }}
                                         </a>
                                         @if(!empty($submenu['children']))
@@ -72,7 +72,7 @@
 
                                                 @foreach ($submenu['children'] as $child)   
                                                     <li class="dropdown-item">
-                                                        <a class="dropdown-link" href="{{$child['target_path']}}">{{$child['display_text']}}</a>
+                                                        <a class="dropdown-link" href="{{$child['target_path']}}" {{$submenu['new_tab']==1? 'target="_blank"': ''}} >{{$child['display_text']}}</a>
                                                     </li>
                                                 @endforeach
 
@@ -135,7 +135,7 @@
                             <ul class="dropdown-menu pt-3 pb-0 pb-xl-3" aria-labelledby="navbar-item-pages">
                                 @foreach ($menu['submenu'] as $submenu)
                                     <li class="dropdown-item {{$submenu['children']?'dropdown dropright':''}} ">
-                                        <a  class="dropdown-link {{$submenu['children']?'dropdown-toggle':''}} " href="{{empty($submenu['children'])?$submenu['target_path']: '#'}}" {{empty($submenu['children'])?'': ' data-toggle="dropdown"'}} >
+                                        <a  class="dropdown-link {{$submenu['children']?'dropdown-toggle':''}} " {{$submenu['new_tab']==1? 'target="_blank"': ''}} href="{{empty($submenu['children'])?$submenu['target_path']: '#'}}" {{empty($submenu['children'])?'': ' data-toggle="dropdown"'}} >
                                             {{ $submenu['display_text'] }}
                                         </a>
                                         @if(!empty($submenu['children']))
@@ -143,7 +143,7 @@
 
                                                 @foreach ($submenu['children'] as $child)   
                                                     <li class="dropdown-item">
-                                                        <a class="dropdown-link" href="{{$child['target_path']}}">{{$child['display_text']}}</a>
+                                                        <a class="dropdown-link" href="{{$child['target_path']}}" {{$submenu['new_tab']==1? 'target="_blank"': ''}} >{{$child['display_text']}}</a>
                                                     </li>
                                                 @endforeach
 

@@ -1,3 +1,6 @@
+/*Override Styles of the Theme for Home Page*/
+
+
 @media (min-width: 992px) {
     .main-menu{
         display: flex;

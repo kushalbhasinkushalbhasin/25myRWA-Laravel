@@ -2,13 +2,18 @@
 
 namespace App\Http\Controllers;
 
+// C: Amal : File with all details to All logic to load the Home Page
+// 25Jun11 AT : Added HomePagePopUp linked to to wo_homepagepopup
+// 25Jun12 AT : Renamed the file to HomeSlider.php 
+
+
 use App\Models\HomeContactUs;
 use Illuminate\Http\Request;
 use App\Models\TblAdervitiserModule;
-use App\Models\HomeFlashBanner;
+use App\Models\HomeSlider;
 use Illuminate\Support\Facades\Validator;
 use App\Models\TrkHomeSections;
-use App\Models\NewsLetters;
+use App\Models\HomePagePopUp;
 
 class HomeController extends Controller
 {
@@ -23,15 +28,15 @@ class HomeController extends Controller
         $home_sections = array_column($home_sections, 'section_name');
   
         $advertisers = TblAdervitiserModule::where('status', 'Active')->get()->toArray();
-        $sliders     = HomeFlashBanner::where('status', 1)
+        $sliders     = HomeSlider::where('status', 1)
             ->where('client_id', app('client')->id)
             ->get()->toArray();
             
-        $newsLetters = NewsLetters::where('status', 1)
+        $homePagePopUp = HomePagePopUp::where('status', 1)
                         ->where('client_id', app('client')->id)
                         ->first();
 
-        return view('home', compact('advertisers', 'sliders', 'home_sections','newsLetters'));
+        return view('home', compact('advertisers', 'sliders', 'home_sections','homePagePopUp'));
     }
 
     public function saveContactUs(Request $request)

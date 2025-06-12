@@ -1,3 +1,9 @@
+<!--
+design for sections of home page - sourced from themeforest. Modified for our format
+
+-->
+
+
 @extends('layouts.app')
 
 @section('content')
@@ -1394,13 +1400,13 @@
     </div>
   </div> --}}
   
-@if( !empty($newsLetters) ) 
+@if( !empty($homePagePopUp) ) 
 
   
     <div class="modal fade login-register login-register-modal" id="news-letter-modal" tabindex="-1" role="dialog" aria-labelledby="login-register-modal" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered mxw-571" role="document">
 
-          <img src="RWAVendor/clients/newsletter/{{$newsLetters->image}}" />
+          <img src="RWAVendor/clients/popUps/{{$homePagePopUp->image}}" />
 
       </div>
     </div>

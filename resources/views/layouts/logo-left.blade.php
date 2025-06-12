@@ -29,14 +29,14 @@
                     @foreach ($menu['submenu'] as $submenu)
                     <li class="dropdown-item {{$submenu['children']?'dropdown dropright':''}} ">
                         <a id="navbar-link-news" class="dropdown-link {{$submenu['children']?'dropdown-toggle':''}} "
-                            href="{{empty($submenu['children'])?$submenu['target_path']: '#'}}" data-toggle="dropdown">
+                            href="{{empty($submenu['children'])?$submenu['target_path']: '#'}}" {{$submenu['new_tab']==1? 'target="_blank"': ''}}  {{empty($submenu['children'])?'data-toggle="dropdown"':''}}>
                             {{ $submenu['display_text'] }}
                         </a>
                         @if(!empty($submenu['children']))
                         <ul class="dropdown-menu dropdown-submenu pt-3 pb-0 pb-lg-3" aria-labelledby="navbar-link-news">
                             @foreach ($submenu['children'] as $child)
                             <li class="dropdown-item">
-                                <a class="dropdown-link" href="{{$child['target_path']}}">{{$child['display_text']}}</a>
+                                <a class="dropdown-link" href="{{$child['target_path']}}" {{$submenu['new_tab']==1? 'target="_blank"': ''}} >{{$child['display_text']}}</a>
                             </li>
                             @endforeach
                         </ul>
