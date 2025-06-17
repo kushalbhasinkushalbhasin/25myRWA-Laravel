@@ -10,7 +10,7 @@
         <!--</a>-->
         <button class="navbar-toggler border-0 px-0" type="button" data-toggle="collapse" data-target="#primaryMenu06"
             aria-controls="primaryMenu06" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="text-white fs-24"><i class="fal fa-bars"></i></span>
+            <span class="text-logo-green fs-24"><i class="fal fa-bars"></i></span>
         </button>
     </div>
 
@@ -61,13 +61,19 @@
         </div>
         @endif
     </div>
-     @if(0)
+<!--login enable disable -->
+     @if(1)
     <div class="d-none d-lg-block">
         <ul class="navbar-nav flex-row ml-auto align-items-center justify-content-lg-end flex-wrap py-2">
 
             {{-- <li class="divider"></li> --}}
             <li class="nav-item">
-                <a class="nav-link pl-3 px-2" data-toggle="modal" href="#login-register-modal">SIGN IN</a>
+                @if(!empty($_SESSION)&&isset($_SESSION['UR_LOGINID']))
+                    <a class="nav-link pl-3 pr-2" href="logout">Logout</a>
+                @else
+                    <a class="nav-link pl-3 pr-2 btn btn-drk-orange min-w-100" href="login_signup">Login</a>
+                @endif
+    
             </li>
 
         </ul>
