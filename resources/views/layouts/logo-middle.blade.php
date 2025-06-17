@@ -21,9 +21,9 @@
             @foreach ($navMenu as $index => $menu)
                 @if ($index < 5)
                     <li id="navbar-item-pages" class="nav-item dropdown py-2 py-xl-5 px-0 px-xl-4">
-                        <a class="nav-link {{$menu['submenu']?'dropdown-toggle':''}} p-0" href="{{empty($menu['submenu'])? $menu['target_path']: '#'}}" data-toggle="dropdown">
+                        <a class="nav-link  p-0" href="{{empty($menu['submenu'])? $menu['target_path']: '#'}}" data-toggle="dropdown">
                             {{ $menu['display_text'] }}
-                            <span class="caret"></span>
+                            <!--<span class="caret"></span>-->
                         </a>
                         @if(!empty($menu['submenu']))
                             <ul class="dropdown-menu pt-3 pb-0 pb-xl-3" aria-labelledby="navbar-item-pages">

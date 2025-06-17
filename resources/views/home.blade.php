@@ -37,7 +37,7 @@ design for sections of home page - sourced from themeforest. Modified for our fo
 @endif
   
 @if(in_array('home-contact-us', $home_sections))
-    <section class="bg-gray-02 bg-black pt-9 pb-9" id="contact-us-sections" style='background-color:#000!important;'>
+    <section class="bg-gray-02 bg-black pt-9 pb-9" id="contact-us-sections" style='background-color:#fff!important;'>
       <div class="container">
         <h2 class="text-center  line-height-base head-contact-us">
           Contact Us
@@ -98,24 +98,24 @@ design for sections of home page - sourced from themeforest. Modified for our fo
                       @enderror
                   </div>
 
-                  <div class="col-md-12 mt-5">
-                      <input
-                          type="checkbox"
-                          class="form-check-input home-contact-form-control ml-2 @error('newsletter') is-invalid @enderror"
-                          id="newsletter"
-                          name="newsletter"
-                          {{ old('newsletter') ? 'checked' : '' }}
-                          value="1"
-                      >
-                      <label class="form-check-label ml-5" for="newsletter">
-                          Sign up for our email list for updates, promotions, and more.
-                      </label>
-                      @error('newsletter')
-                          <div class="invalid-feedback d-block">
-                              {{ $message }}
-                          </div>
-                      @enderror
-                  </div>
+                  <!--<div class="col-md-12 mt-5">-->
+                  <!--    <input-->
+                  <!--        type="checkbox"-->
+                  <!--        class="form-check-input home-contact-form-control ml-2 @error('newsletter') is-invalid @enderror"-->
+                  <!--        id="newsletter"-->
+                  <!--        name="newsletter"-->
+                  <!--        {{ old('newsletter') ? 'checked' : '' }}-->
+                  <!--        value="1"-->
+                  <!--    >-->
+                  <!--    <label class="form-check-label ml-6" for="newsletter">-->
+                  <!--         Sign up for our email list for updates, promotions, and more.-->
+                  <!--    </label>-->
+                  <!--    @error('newsletter')-->
+                  <!--        <div class="invalid-feedback d-block">-->
+                  <!--            {{ $message }}-->
+                  <!--        </div>-->
+                  <!--    @enderror-->
+                  <!--</div>-->
 
                   <div class="col-md-12 mt-5">
                     @if (session('success'))
@@ -123,7 +123,7 @@ design for sections of home page - sourced from themeforest. Modified for our fo
                         {{ session('success') }}
                       </div>
                     @endif
-                      <button type="submit" class="btn btn-drk-orange btn-lg float-right">Send Message</button>
+                      <button type="submit" class="btn btn-drk-orange btn-lg float-right min-w-100">Send Message</button>
                   </div>
 
               </div>

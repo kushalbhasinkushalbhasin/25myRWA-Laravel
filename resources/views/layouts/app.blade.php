@@ -118,25 +118,25 @@
             <h4 class="text-white fs-16 my-4 font-weight-500 text-center">Follow Us</h4>
             <ul class="list-inline mb-0">
               <li class="list-inline-item mr-0">
-                <a href="{{app('client')->client_whatsapp}}" class="text-white opacity-3 fs-25 px-4 opacity-hover-10"><i class="fab fa-whatsapp"></i></a>
+                <a href="{{app('client')->client_whatsapp}}" class="whatsapp-green  fs-25 px-4 "><i class="fab fa-whatsapp"></i></a>
               </li>
               <li class="list-inline-item mr-0">
-                <a href="{{app('client')->client_facebook}}" class="text-white opacity-3 fs-25 px-4 opacity-hover-10"><i class="fab fa-facebook-f"></i></a>
+                <a href="{{app('client')->client_facebook}}" class="facebook-blue fs-25 px-4 "><i class="fab fa-facebook-f"></i></a>
               </li>
               <li class="list-inline-item mr-0">
-                <a href="{{app('client')->client_instagram}}" class="text-white opacity-3 fs-25 px-4 opacity-hover-10"><i class="fab fa-instagram"></i></a>
+                <a href="{{app('client')->client_instagram}}" class="insta-red fs-25 px-4 "><i class="fab fa-instagram"></i></a>
               </li>
               <li class="list-inline-item mr-0">
-                <a href="{{app('client')->client_twitter}}" class="text-white opacity-3 fs-25 px-4 opacity-hover-10"><i class="fab fa-twitter"></i></a>
+                <a href="{{app('client')->client_twitter}}" class="twitter-blue  fs-25 px-4 "><i class="fab fa-twitter"></i></a>
               </li>
               <li class="list-inline-item mr-0">
-                <a href="{{app('client')->client_youtube}}" class="text-white opacity-3 fs-25 px-4 opacity-hover-10"><i class="fab fa-youtube"></i></a>
+                <a href="{{app('client')->client_youtube}}" class="youtube-red  fs-25 px-4 "><i class="fab fa-youtube"></i></a>
               </li>
               <li class="list-inline-item mr-0">
-                <a href="{{app('client')->client_apple_store}}" class="text-white opacity-3 fs-25 px-4 opacity-hover-10"><i class="fab fa-app-store"></i></a>
+                <a href="{{app('client')->client_apple_store}}" class="text-white fs-25 px-4 "><i class="fab fa-app-store"></i></a>
               </li>
-              <li class="list-inline-item mr-0">
-                <a href="{{app('client')->client_play_store}}" class="text-white opacity-3 fs-25 px-4 opacity-hover-10"><i class="fab fa-google-play"></i></a>
+              <li class="list-inline-item mr-0"> 
+                <a href="{{app('client')->client_play_store}}" class="playstore-blue fs-25 px-4 "><i class="fab fa-google-play"></i></a>
               </li>
             </ul>
 
