@@ -9,11 +9,20 @@ use App\Http\Middleware\IdentifyClient;
 use App\Http\Controllers\HomeController;
 use App\Http\Middleware\BridgeCorePhpSession;
 
+use App\Http\Controllers\MembershipController;
+
+
+
+
 Route::middleware([IdentifyClient::class, BridgeCorePhpSession::class])->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::post('save-contact-us', [HomeController::class, 'saveContactUs'])->name('save_contact_us');
 
 });
+
+Route::get('/membership', [MembershipController::class, 'showForm'])->name('membership.form');
+Route::post('/membership/submit', [MembershipController::class, 'submitForm'])->name('membership.submit');
+
 
 Route::get('/{any}', function ($any) {
     $file    = ltrim($any, '/').'.php';
