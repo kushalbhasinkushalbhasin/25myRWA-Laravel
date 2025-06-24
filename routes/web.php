@@ -50,6 +50,12 @@ Route::get('/{any}', function ($any) {
     abort(404);
 })->where('any', '.*');
 
+Route::post('/membership/verify-otp', [MembershipController::class, 'verifyOtp'])->name('membership.verifyOtp');
+Route::post('/membership/resend-otp', [MembershipController::class, 'resendOtp'])->name('membership.resendOtp');
+Route::get('/membership/confirmed', function () {
+    return view('membership.confirmed');
+})->name('membership.confirmed');
+
 
 
 require __DIR__ . '/auth.php';

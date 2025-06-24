@@ -79,19 +79,6 @@
       border-radius: 4px;
       font-size: 0.9rem;
     }
-    .confirmation-box {
-      text-align: center;
-      margin-top: 20px;
-      padding: 15px;
-      background-color: #e8f5e9;
-      border: 1px solid #c8e6c9;
-      border-radius: 8px;
-    }
-    .confirmation-box a {
-      color: #2e7d32;
-      font-weight: bold;
-      text-decoration: underline;
-    }
   </style>
 </head>
 <body>
@@ -105,30 +92,27 @@
       <div class="success">{{ session('success') }}</div>
     @endif
 
-    @if (session('otp_verified'))
-      <div class="confirmation-box">
-        ✅ Your email has been verified.<br>
-        📝 Membership successfully registered.<br><br>
-        <a href="{{ route('membership.payment') }}">Click here to pay the membership fees</a>
-      </div>
-    @else
-      <form method="POST" action="{{ route('membership.verifyOtp') }}" id="otpForm">
-        @csrf
-        <input type="hidden" name="email" value="{{ $email }}">
+    <form method="POST" action="{{ route('membership.verifyOtp') }}" id="otpForm">
+      @csrf
+      <input type="hidden" name="email" value="{{ $email }}">
 
-        <label for="otp">6-digit OTP Code</label>
-        <input type="text" name="otp" id="otp" maxlength="6" required>
 
-        <button type="submit" class="btn-submit">Verify OTP</button>
-      </form>
+      <label for="otp">6-digit OTP Code</label>
+      <input type="text" name="otp" id="otp" maxlength="6" required>
 
-      <div class="resend-link">
-        <label for="resendEmail">Enter your email to resend OTP:</label>
-        <input type="text" id="resendEmail" name="email" readonly value="{{ $email ?? '' }}">
-        <button class="btn-submit" onclick="resendOtp()">Resend OTP</button>
-        <div id="resendFeedback" style="margin-top: 10px;"></div>
-      </div>
-    @endif
+      <button type="submit" class="btn-submit">Verify OTP</button>
+    </form>
+
+    <div class="resend-link">
+      <label for="resendEmail">Enter your email to resend OTP:</label>
+      <!--allo users to modify email during resend 
+      <input type="text" id="resendEmail" name="email" placeholder="example@email.com" value="{{ $email ?? '' }}">-->
+      <input type="text" id="resendEmail" name="email" readonly value="{{ $email ?? '' }}">
+
+      
+      <button class="btn-submit" onclick="resendOtp()">Resend OTP</button>
+      <div id="resendFeedback" style="margin-top: 10px;"></div>
+    </div>
   </div>
 
   <script>
