@@ -8,6 +8,11 @@ use App\Models\CmnStreet;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Hash;
 use App\Mail\SendOtpMail;
+use App\Models\wo_users; 
+use Illuminate\Support\Facades\DB;
+use App\Models\User;
+use App\Models\UserProfile;
+
 
 class MembershipController extends Controller
 {
@@ -31,7 +36,9 @@ class MembershipController extends Controller
             'terms' => 'accepted',
         ]);
 
-        $otp = rand(100000, 999999);
+        // $otp = rand(100000, 999999);
+        $otp = 123456;
+
 
         $temp = TempMemb::create([
             'title' => $request->title,
@@ -44,14 +51,123 @@ class MembershipController extends Controller
             'email' => $request->email,
             'mobile' => $request->mobile,
             'terms_accepted' => true,
-            'otp' => Hash::make($otp),
+            // 'otp' => Hash::make($otp),
+            'otp' => $otp,
             'otp_expires_at' => now()->addMinutes(5),
             'ip_address' => $request->ip(),
             'user_agent' => $request->userAgent(),
         ]);
 
-        Mail::to($request->email)->send(new SendOtpMail($otp));
+// Mail disabled temporarily due to delivery issues.
+// Mail::to($request->email)->send(new SendOtpMail($otp));
 
         return view('membership.enter_otp')->with('email', $request->email);
     }
+    
+    public function verifyOtp(Request $request)
+{
+    $request->validate([
+        'email' => 'required|email',
+        'otp' => 'required|digits:6',
+    ]);
+
+    $temp = TempMemb::where('email', $request->email)->first();
+
+    if (!$temp) {
+        return back()->with('error', 'Temporary record not found.');
+    }
+
+    if (now()->gt($temp->otp_expires_at)) {
+        return back()->with('error', 'OTP has expired.');
+    }
+
+    if ($request->otp !== $temp->otp) {
+        return back()->with('error', 'Invalid OTP entered.');
+    }
+
+    // Create the user in default 'users' table
+    $user = User::create([
+        'name' => $temp->first_name . ' ' . $temp->last_name,
+        'email' => $temp->email,
+        'password' => bcrypt('TempPass' . rand(1000, 9999)), // Random password or leave null if not needed
+    ]);
+
+    // Create the profile in 'user_profiles' table (if you’re using it)
+    if (class_exists(UserProfile::class)) {
+        $user->profile()->create([
+            'title' => $temp->title,
+            'first_name' => $temp->first_name,
+            'last_name' => $temp->last_name,
+            'house_no' => $temp->house_no,
+            'street_id' => $temp->street_id,
+            'line3' => $temp->line3,
+            'post_code' => $temp->post_code,
+            'mobile' => $temp->mobile,
+            'terms_accepted' => $temp->terms_accepted,
+            'meeting_attendance' => $temp->meeting_attendance ?? false,
+        ]);
+    }
+
+    // Delete temp record
+    $temp->delete();
+
+    return redirect()->route('membership.form')->with('success', 'OTP verified and membership enrolled!');
+    
+// try {
+//     Mail::to($user->email)->send(new \App\Mail\MembershipConfirmedMail($user));
+// } catch (\Exception $e) {
+//     \Log::error("Mail failed: " . $e->getMessage());
+//     // Don't interrupt the flow
+// }
+
+// return redirect()->route('membership.confirmed');
+
+// return redirect()->route('membership.form')->with('success', 'OTP verified. Membership confirmed.');
+
+
+    
 }
+   
+public function resendOtp(Request $request)
+{
+    $request->validate([
+        'email' => 'required|email'
+    ]);
+
+    try {
+        $otp = 123456;
+        $email = $request->email;
+
+        $existing = TempMemb::where('email', $email)->first();
+
+        if ($existing) {
+            $existing->update([
+                'otp' => $otp,
+                'otp_expires_at' => now()->addMinutes(5),
+                'ip_address' => $request->ip(),
+                'user_agent' => $request->userAgent(),
+            ]);
+        } else {
+            TempMemb::create([
+                'email' => $email,
+                'otp' => $otp,
+                'otp_expires_at' => now()->addMinutes(5),
+                'ip_address' => $request->ip(),
+                'user_agent' => $request->userAgent(),
+                'terms_accepted' => false,
+            ]);
+        }
+
+        // Return JSON response for AJAX
+        return response()->json(['success' => true]);
+
+    } catch (\Exception $e) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Server error: ' . $e->getMessage()
+        ], 500);
+    }
+}
+
+}
+

@@ -44,6 +44,13 @@
 <body>
 
 <div class="container mt-5 mb-5" style="max-width: 720px;">
+    
+    @if (session('success'))
+  <div class="success" style="background-color: #e0f7e0; border: 1px solid #c8e6c9; color: #2e7d32; padding: 10px; margin-bottom: 15px; border-radius: 6px;">
+    {{ session('success') }}
+  </div>
+@endif
+
     <div class="card shadow border-0">
         <div class="card-header text-white text-center" style="background-color: #4CAF50;">
             <h4 class="mb-0">CHWRA Membership Enrolment</h4>
