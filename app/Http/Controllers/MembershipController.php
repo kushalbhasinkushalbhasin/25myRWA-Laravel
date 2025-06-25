@@ -59,7 +59,8 @@ class MembershipController extends Controller
         ]);
 
 // Mail disabled temporarily due to delivery issues.
-// Mail::to($request->email)->send(new SendOtpMail($otp));
+    //   Mail::to($request->email)->send(new SendOtpMail($otp));
+     //print_r($result);exit;
 
         return view('membership.enter_otp')->with('email', $request->email);
     }

@@ -19,7 +19,7 @@ class SendOtpMail extends Mailable
 
     public function build()
     {
-        return $this->subject('CHWRA OTP Verification')
+        return $this->subject('Your OTP Code')
                     ->view('emails.otp')
                     ->with(['otp' => $this->otp]);
     }
