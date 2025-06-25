@@ -35,7 +35,9 @@ class HomeController extends Controller
         $homePagePopUp = HomePagePopUp::where('status', 1)
                         ->where('client_id', app('client')->id)
                         ->first();
-
+    //   echo "<pre>";
+    //   print_r($home_sections);
+    //   exit;
         return view('home', compact('advertisers', 'sliders', 'home_sections','homePagePopUp'));
     }
 

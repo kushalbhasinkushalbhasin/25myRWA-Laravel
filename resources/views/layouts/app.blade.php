@@ -68,7 +68,7 @@
             </a>
             <div class="lh-26 font-weight-500">
               <p class="mb-0">{{app('client')->client_address}}</p>
-              <a class="d-block text-muted hover-white" href="mailto:contact@homeid.com">{{app('client')->client_email}}</a>
+              <a class="d-block text-muted hover-white" href="mailto:{{app('client')->client_email}}">{{app('client')->client_email}}</a>
               <a class="d-block text-lighter font-weight-bold fs-15 hover-white"
                 href="tel:{{app('client')->client_phone}}">{{app('client')->client_phone}}</a>
             </div>
