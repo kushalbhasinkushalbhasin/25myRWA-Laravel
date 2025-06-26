@@ -40,7 +40,7 @@ design for sections of home page - sourced from themeforest. Modified for our fo
     <section class="bg-gray-02 bg-black pt-9 pb-9" id="contact-us-sections" style='background-color:#fff!important;'>
       <div class="container">
         <h2 class="text-center  line-height-base head-contact-us">
-          Contact Us
+          Contact Us Not 
         </h2>
         <span class="heading-divider mx-auto mb-7"></span>
         <h5 class="text-center text-white">Drop us a line!</h5>

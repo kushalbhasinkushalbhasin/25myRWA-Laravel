@@ -1,3 +1,5 @@
+<!--25jun KB Disable  Login-->
+
 <nav class="navbar navbar-expand-lg bg-transparent px-0">
 
     <a class="navbar-brand" href="{{route('home')}}">
@@ -62,7 +64,7 @@
         @endif
     </div>
 <!--login enable disable -->
-     @if(1)
+     @if(0)
     <div class="d-none d-lg-block">
         <ul class="navbar-nav flex-row ml-auto align-items-center justify-content-lg-end flex-wrap py-2">
 
