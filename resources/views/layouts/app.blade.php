@@ -59,17 +59,26 @@
 
     </main>
 
-    <footer class="bg-dark pt-8 pb-6 footer text-muted">
+    <!--<footer class="bg-dark pt-8 pb-6 footer text-muted">-->
+    <footer class="bg-dark pt-8 pb-6 footer text-white"> 
       <div class="container">
         <div class="row">
           <div class="col-md-6 col-lg-4 mb-6 mb-md-0">
             <a class="d-block mb-2" href="#">
               <img src="{{ asset('RWAVendor/clients/logo/' . app('client')->client_logo) }}" alt="logo" class="footer-logo">
             </a>
-            <div class="lh-26 font-weight-500">
+            <div class=" font-weight-500 fs-18">
               <p class="mb-0">{{app('client')->client_address}}</p>
-              <a class="d-block text-muted hover-white" href="mailto:{{app('client')->client_email}}">{{app('client')->client_email}}</a>
-              <a class="d-block text-lighter font-weight-bold fs-15 hover-white"
+
+              <!--<a class="d-block text-muted hover-white" href="mailto:{{app('client')->client_email}}">{{app('client')->client_email}}</a>-->
+              <!--<a class="d-block text-lighter font-weight-bold fs-15 hover-white"-->
+
+                <a class="d-block hover-green text-white" href="mailto:{{app('client')->client_email}}">{{app('client')->client_email}}</a>
+    
+              <a class="d-block  text-white font-weight-bold fs-18 hover-white"
+                href="tel:{{app('client')->client_phone}}">{{app('client')->client_phone}}</a>
+              <a class="d-block  text-white font-weight-bold fs-18 hover-white"
+
                 href="tel:{{app('client')->client_phone}}">{{app('client')->client_phone}}</a>
             </div>
           </div>
@@ -94,6 +103,7 @@
           </div>
           @endif
           <div class="col-md-6 col-lg-3 mb-6 mb-md-0">
+            @if(0)
             <h4 class="text-white fs-16 my-4 font-weight-500">Quick links</h4>
             <ul class="list-group list-group-flush list-group-no-border">
               <li class="list-group-item bg-transparent p-0">
@@ -112,8 +122,10 @@
               <!--  <a href="#" class="text-muted lh-26 hover-white font-weight-500">Login</a>-->
               <!--</li>-->
             </ul>
-          </div>
+            @endif
 
+          </div>
+        <!--display social media icons. Do no display if no data in clients tables -->
           <div class="col-md-6 col-lg-4 mb-6 mb-md-0">
             <h4 class="text-white fs-16 my-4 font-weight-500 text-center">Follow Us</h4>
             <ul class="list-inline mb-0">
@@ -146,7 +158,7 @@
         <div class="mt-0 mt-md-10 row">
           <ul class="list-inline mb-0 col-md-10 mr-auto">
             <li class="list-inline-item mr-6">
-              <a href="/terms_conditions" class="text-muted lh-26 font-weight-500 hover-white">Terms of Use</a>
+              <a href="/terms_conditions" class="fs-17 text-muted lh-26 font-weight-500 hover-white">Terms of Use</a>
             </li>
             <li class="list-inline-item mr-6">
               <a href="/privacy" class="text-muted lh-26 font-weight-500 hover-white">Privacy Policy</a>

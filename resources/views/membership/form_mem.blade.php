@@ -164,9 +164,21 @@
 
                 {{-- Terms and Policies --}}
                 <div class="form-check mb-4">
-                    <input class="form-check-input" type="checkbox" name="terms" id="terms" required>
+                    <input class="form-check-input" type="checkbox" name="terms" id="terms" required 
+                    style="
+                        width: 1.2em;
+                        height: 1.2em;
+                        border: 3px solid #000 !important; /* Thick black border */
+                        border-radius: 0.25em;
+                        cursor: pointer;
+                        appearance: none;
+                        -webkit-appearance: none;
+                        margin-top: 0.2em;
+                    "
+                    onchange="this.style.backgroundColor = this.checked ? '#000' : ''"
+                    >
                     <label class="form-check-label small" for="terms">
-                        By submitting this form, you agree to our
+                          By submitting this form, you agree to our
                         <a href="/terms" target="_blank">Terms & Conditions</a>,
                         <a href="/privacy" target="_blank">Privacy Policy</a>, and
                         <a href="/cookies" target="_blank">Cookie Policy</a>.
