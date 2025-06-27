@@ -18,6 +18,7 @@ class UserProfile extends Model
         'street_id',
         'line3',
         'post_code',
+        'city',  
         'mobile',
         'terms_accepted',
         'meeting_attendance',
