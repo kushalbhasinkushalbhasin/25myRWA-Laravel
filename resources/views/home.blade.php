@@ -35,6 +35,30 @@ design for sections of home page - sourced from themeforest. Modified for our fo
     </div>
   </section>
 @endif
+
+<!--@if(in_array('home-contact-us', $home_sections))-->
+<!--    <section class="bg-gray-02 bg-black pt-9 pb-9" id="contact-us-sections" style='background-color:#fff!important;'>-->
+<!--      <div class="container">-->
+<!--        <h2 class="text-center  line-height-base head-contact-us">-->
+<!--          Contact Us -->
+          <div class="text-center mt-4" style="font-size: 1.5em;">
+            <p>
+              Please feel free to write to us on 
+              <a href="mailto:office@cannonhillresidents.org.uk" 
+                 style="color: blue; text-decoration: underline;" 
+                 onclick="window.location.href='mailto:office@cannonhillresidents.org.uk'; return false;">
+                office@cannonhillresidents.org.uk
+              </a>
+              <br>
+              <a href="https://cannonhillresidents.org.uk/" target="_blank" style="color: #000; margin-top: 10px; display: inline-block;">
+                ***
+              </a>
+            </p>
+          </div>
+<!--      </div>-->
+<!--    </section>-->
+<!--@endif-->
+
   
 <!--@if(in_array('home-contact-us', $home_sections))-->
 <!--    <section class="bg-gray-02 bg-black pt-9 pb-9" id="contact-us-sections" style='background-color:#fff!important;'>-->

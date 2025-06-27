@@ -75,13 +75,29 @@
 
                 <a class="d-block hover-green text-white" href="mailto:{{app('client')->client_email}}">{{app('client')->client_email}}</a>
 
-              <li class="list-inline-item mr-0">
-                <a href="{{app('client')->client_whatsapp}}" class="whatsapp-green  fs-25 px-4 "><i class="fab fa-whatsapp"></i></a>
-              </li>
+             <a class="d-block  text-white font-weight-bold fs-18 hover-white"
+                href="tel:{{app('client')->client_phone}}">{{app('client')->client_phone}}</a>
+        
+        <li class="list-inline-item mr-0">
+    <a href="https://wa.me/447470169440" class="whatsapp-green fs-25 px-4" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+</li>
+        
+        
+        
+            <!--        <li class="list-inline-item mr-0">-->
+            <!--    <a href="https://wa.me/{{ str_replace('+', '', app('client')->client_whatsapp) }}" class="whatsapp-green fs-25 px-4" target="_blank" rel="noopener noreferrer">-->
+            <!--        <i class="fab fa-whatsapp"></i>-->
+            <!--    </a>-->
+            <!--</li>-->
+        
+        
+              <!--<li class="list-inline-item mr-0">-->
+              <!--  <a href="{{app('client')->client_whatsapp}}" class="whatsapp-green  fs-25 px-4 "><i class="fab fa-whatsapp"></i></a>-->
+              <!--</li>-->
 
     
-              <a class="d-block  text-white font-weight-bold fs-18 hover-white"
-                href="tel:{{app('client')->client_phone}}">{{app('client')->client_phone}}</a>
               <!--<a class="d-block  text-white font-weight-bold fs-18 hover-white"-->
 
               <!--  href="tel:{{app('client')->client_phone}}">{{app('client')->client_phone}}</a>-->
