@@ -19,6 +19,12 @@ return [
         'id' => env('GOOGLE_ANALYTICS_ID', null), // 'null' is a good default if you don't want a fallback ID
     ],
 
+
+    'google_analytics' => [
+        'id' => env('GOOGLE_ANALYTICS_ID', null), // 'null' is a good default if you don't want a fallback ID
+    ],
+
+
     'postmark' => [
         'token' => env('POSTMARK_TOKEN'),
     ],

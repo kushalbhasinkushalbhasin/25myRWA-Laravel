@@ -31,6 +31,7 @@ class MembershipController extends Controller
         'last_name' => 'required|string|max:50',
         'house_no' => 'required|string|max:10',
         'street' => 'required|string|max:50', // Matches your VARCHAR(50)
+        'city' => 'required|string|max:100',
         'post_code' => ['required', 'regex:/^[A-Za-z0-9 ]{6,8}$/'],
         'email' => 'required|email', // Remove 'unique:temp_memb,email'
         // 'email' => 'required|email|unique:temp_memb,email',
@@ -48,6 +49,7 @@ $temp = TempMemb::create([
     'street_name' => $request->street,  // Primary street field
     'street_id' => null,                // Explicit null (now allowed)
     'line3' => $request->line3,
+    'city' => $request->city,
     'post_code' => strtoupper(trim($request->post_code)),
     'email' => $request->email,
     'mobile' => '',                     // Empty string (from earlier fix)
@@ -119,6 +121,7 @@ return back()
             'street_id' => $temp->street_id,
             'line3' => $temp->line3,
             'post_code' => $temp->post_code,
+            'city' => $temp->city,
             'mobile' => $temp->mobile,
             'terms_accepted' => $temp->terms_accepted,
             'meeting_attendance' => $temp->meeting_attendance ?? false,

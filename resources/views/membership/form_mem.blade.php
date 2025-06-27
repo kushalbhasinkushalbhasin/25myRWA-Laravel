@@ -1,10 +1,13 @@
 <!DOCTYPE html>
+
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>CHWRA Membership Enrolment</title>
-    
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
     
     {{-- Bootstrap 5 --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -15,6 +18,8 @@
 
 <!-- Bootstrap JS Bundle -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<link href="{{ asset('assets/css/membership.css') }}" rel="stylesheet">
 
 
     <style>
@@ -103,7 +108,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     <div class="card shadow border-0">
         <div class="card-header text-white text-center" style="background-color: #4CAF50;">
-            <h4 class="mb-0">CHWRA Membership Enrolment</h4>
+            <h4 class="mb-0">Application for individual membership</h4>
         </div>
 
         <div class="card-body p-4">
@@ -121,17 +126,17 @@ document.addEventListener('DOMContentLoaded', function() {
             <form method="POST" action="{{ route('membership.submit') }}" id="membershipForm" novalidate>
                 @csrf
 
-                <div class="col-md-5">
-                    <div class="text-center fs-6 fw-normal text-black">Annual Membership GBP 3</div>
-                </div>
+                <!--<div class="col-md-12">-->
+                <!--    <div class="text-center fs-6 fw-normal text-black">Annual Membership Fees of GBP 3 until 30th June, 2026. </div>-->
+                <!--</div>-->
 
                 {{-- Title + First Name --}}
                 <div class="row mb-3">
                     <div class="col-md-4">
                         <div class="form-floating">
                             <select class="form-select" name="title" id="title" required>
-                                <option value="">Select</option>
-                                @foreach(['Mr', 'Mrs', 'Miss', 'Ms', 'Other'] as $title)
+                                <!--<option value="">Select</option>-->
+                                @foreach(['Mr', 'Mrs', 'Miss',  'Other'] as $title)
                                     <option value="{{ $title }}" {{ old('title') == $title ? 'selected' : '' }}>{{ $title }}</option>
                                 @endforeach
                             </select>
@@ -179,10 +184,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 {{-- City + Post Code --}}
                 <div class="row mb-3">
                     <div class="col-md-6">
-                        <div class="form-floating">
-                            <input type="text" class="form-control" id="city" name="city" value="London" readonly placeholder="City">
-                            <label for="city">City</label>
-                        </div>
+
+
+                    <div class="form-floating mb-3">
+                      <input type="text" class="form-control" id="city" name="city" placeholder="City" required>
+                      <label for="city">City</label>
+                    </div>
+
+
+
+
                     </div>
                     <div class="col-md-6">
                         <div class="form-floating">
@@ -198,13 +209,16 @@ document.addEventListener('DOMContentLoaded', function() {
                     <label for="email">Email Address</label>
                 </div>
 
-                {{-- Meeting Attendance Toggle --}}
-                <div class="form-check form-switch mt-4 mb-3">
-                    <input class="form-check-input" type="checkbox" name="meeting_attendance" id="meeting_attendance" value="able" checked>
-                    <label class="form-check-label" for="meeting_attendance">
-                        I will be able to attend the meeting on 28th
-                    </label>
-                </div>
+                <!--{{-- Meeting Attendance Toggle --}}-->
+                <!--<div class="form-check form-switch mt-4 mb-3">-->
+                <!--    <input class="form-check-input" type="checkbox" name="meeting_attendance" id="meeting_attendance" value="able" checked>-->
+                <!--    <label class="form-check-label" for="meeting_attendance">-->
+                <!--        I will be able to attend the meeting on 28th-->
+                <!--    </label>-->
+                <!--</div>-->
+                
+                
+                
 
                 {{-- Terms and Policies --}}
                 <div class="form-check mb-4">
@@ -212,23 +226,30 @@ document.addEventListener('DOMContentLoaded', function() {
                     style="
                         width: 1.2em;
                         height: 1.2em;
-                        border: 3px solid #000 !important;
+                        border: 3px solid #198754 !important;
                         border-radius: 0.25em;
                         cursor: pointer;
                         appearance: none;
                         -webkit-appearance: none;
                         margin-top: 0.2em;
                     "
-                    onchange="this.style.backgroundColor = this.checked ? '#000' : ''"
+                    onchange="this.style.backgroundColor = this.checked ? '#198754' : ''"
                     >
                     <label class="form-check-label small" for="terms">
-                    Yes I would like to join the association. 
+                    I confirm I am over 18.  Yes, I would like to join Cannon Hill Ward Residents’ Association. (Subscription Fees of £3, for until 30th June, 2026).
                         <!--By submitting this form, you agree to our-->
                         <!--<a href="/terms" target="_blank">Terms & Conditions</a>,-->
                         <!--<a href="/privacy" target="_blank">Privacy Policy</a>, and-->
                         <!--<a href="/cookies" target="_blank">Cookie Policy</a>.-->
                     </label>
                 </div>
+                
+                                <div class="col-md-12">
+                    <div class="text-left fs-6 fw-normal text-black">Privacy Notice: The Cannon Hill Ward Residents’ Association stores your data securely
+and uses it only to manage your subscription and share local updates. We never share your information. You can unsubscribe or request deletion at any time.  <a href="/privacy.pdf" target="_blank">Full privacy policy.</a> </div>
+                </div>
+
+
 
                 {{-- Submit --}}
                 <button type="submit" class="submit-button">Submit </button>

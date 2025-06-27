@@ -1,24 +1,24 @@
 <!doctype html>
 <html lang="en">
   <head>
-    
-    @if (config('services.google_analytics.id')) 
-        <script async src="https://www.googletagmanager.com/gtag/js?id={{ config('services.google_analytics.id') }}"></script> 
-        <script> 
-          window.dataLayer = window.dataLayer || []; 
-          function gtag(){dataLayer.push(arguments);} 
-          gtag('js', new Date()); 
 
-          gtag('config', '{{ config('services.google_analytics.id') }}'); 
-        </script> 
-    @endif 
+    @if (config('services.google_analytics.id'))
+        <script async src="https://www.googletagmanager.com/gtag/js?id={{ config('services.google_analytics.id') }}"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
 
-    <meta charset="utf-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1"> 
-    <title>CHWRA</title>
+          gtag('config', '{{ config('services.google_analytics.id') }}');
+        </script>
+    @endif
 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CHWRA</title>
 
-
+      
+      
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Real Estate Html Template">
@@ -163,35 +163,35 @@
             </ul>
             @endif
 
-          </div>
+        <!--  </div>-->
         <!--display social media icons. Do no display if no data in clients tables -->
-          <div class="col-md-6 col-lg-4 mb-6 mb-md-0">
-            <h4 class="text-white fs-16 my-4 font-weight-500 text-center">Follow Us</h4>
-            <ul class="list-inline mb-0">
-              <li class="list-inline-item mr-0">
-                <a href="{{app('client')->client_whatsapp}}" class="whatsapp-green  fs-25 px-4 "><i class="fab fa-whatsapp"></i></a>
-              </li>
-              <li class="list-inline-item mr-0">
-                <a href="{{app('client')->client_facebook}}" class="facebook-blue fs-25 px-4 "><i class="fab fa-facebook-f"></i></a>
-              </li>
-              <li class="list-inline-item mr-0">
-                <a href="{{app('client')->client_instagram}}" class="insta-red fs-25 px-4 "><i class="fab fa-instagram"></i></a>
-              </li>
-              <li class="list-inline-item mr-0">
-                <a href="{{app('client')->client_twitter}}" class="twitter-blue  fs-25 px-4 "><i class="fab fa-twitter"></i></a>
-              </li>
-              <li class="list-inline-item mr-0">
-                <a href="{{app('client')->client_youtube}}" class="youtube-red  fs-25 px-4 "><i class="fab fa-youtube"></i></a>
-              </li>
-              <li class="list-inline-item mr-0">
-                <a href="{{app('client')->client_apple_store}}" class="text-white fs-25 px-4 "><i class="fab fa-app-store"></i></a>
-              </li>
-              <li class="list-inline-item mr-0"> 
-                <a href="{{app('client')->client_play_store}}" class="playstore-blue fs-25 px-4 "><i class="fab fa-google-play"></i></a>
-              </li>
-            </ul>
+        <!--  <div class="col-md-6 col-lg-4 mb-6 mb-md-0">-->
+        <!--    <h4 class="text-white fs-16 my-4 font-weight-500 text-center">Follow Us</h4>-->
+        <!--    <ul class="list-inline mb-0">-->
+        <!--      <li class="list-inline-item mr-0">-->
+        <!--        <a href="{{app('client')->client_whatsapp}}" class="whatsapp-green  fs-25 px-4 "><i class="fab fa-whatsapp"></i></a>-->
+        <!--      </li>-->
+        <!--      <li class="list-inline-item mr-0">-->
+        <!--        <a href="{{app('client')->client_facebook}}" class="facebook-blue fs-25 px-4 "><i class="fab fa-facebook-f"></i></a>-->
+        <!--      </li>-->
+        <!--      <li class="list-inline-item mr-0">-->
+        <!--        <a href="{{app('client')->client_instagram}}" class="insta-red fs-25 px-4 "><i class="fab fa-instagram"></i></a>-->
+        <!--      </li>-->
+        <!--      <li class="list-inline-item mr-0">-->
+        <!--        <a href="{{app('client')->client_twitter}}" class="twitter-blue  fs-25 px-4 "><i class="fab fa-twitter"></i></a>-->
+        <!--      </li>-->
+        <!--      <li class="list-inline-item mr-0">-->
+        <!--        <a href="{{app('client')->client_youtube}}" class="youtube-red  fs-25 px-4 "><i class="fab fa-youtube"></i></a>-->
+        <!--      </li>-->
+        <!--      <li class="list-inline-item mr-0">-->
+        <!--        <a href="{{app('client')->client_apple_store}}" class="text-white fs-25 px-4 "><i class="fab fa-app-store"></i></a>-->
+        <!--      </li>-->
+        <!--      <li class="list-inline-item mr-0"> -->
+        <!--        <a href="{{app('client')->client_play_store}}" class="playstore-blue fs-25 px-4 "><i class="fab fa-google-play"></i></a>-->
+        <!--      </li>-->
+        <!--    </ul>-->
 
-          </div>
+        <!--  </div>-->
 
         </div>
         <div class="mt-0 mt-md-10 row">
@@ -199,9 +199,9 @@
             <!--<li class="list-inline-item mr-6">-->
             <!--  <a href="/terms_conditions" class="fs-17 text-muted lh-26 font-weight-500 hover-white">Terms of Use</a>-->
             <!--</li>-->
-            <!--<li class="list-inline-item mr-6">-->
-            <!--  <a href="/privacy" class="text-muted lh-26 font-weight-500 hover-white">Privacy Policy</a>-->
-            <!--</li>-->
+            <li class="list-inline-item mr-6">
+              <a href="/privacy.pdf" class="text-muted lh-26 font-weight-500 hover-white">PrivacyPolicy</a>
+            </li>
             <!--<li class="list-inline-item mr-6">-->
             <!--  <a href="/refund_policy" class="text-muted lh-26 font-weight-500 hover-white">Refunds</a>-->
             <!--</li>-->
@@ -218,10 +218,10 @@
             <!--  <a href="/cookies-privacy" class="text-muted lh-26 font-weight-500 hover-white">Cookies Policy</a>-->
             <!--</li>-->
             
-          </ul>
-          <p class="col-md-auto mb-0 text-muted mt-5 copy-right">
-            © 2025 Innovatus Solutions. All Rights Reserved
-          </p>
+          <!--</ul>-->
+          <!--<p class="col-md-auto mb-0 text-muted mt-5 copy-right">-->
+          <!--  © 2025 Innovatus Solutions. All Rights Reserved-->
+          <!--</p>-->
         </div>
       </div>
     </footer>
