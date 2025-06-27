@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\TempMemb;
 use App\Models\CmnStreet;
+use App\Mail\MembershipConfirmation;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Hash;
 use App\Mail\SendOtpMail;
@@ -22,48 +23,63 @@ class MembershipController extends Controller
         return view('membership.form_mem', compact('streets'));
     }
 
-    public function submitForm(Request $request)
-    {
-        $request->validate([
-            'title' => 'required|string',
-            'first_name' => 'required|string|max:50',
-            'last_name' => 'required|string|max:50',
-            'house_no' => 'required|string|max:10',
-            'street_id' => 'required|exists:cmn_street,id',
-            'post_code' => ['required', 'regex:/^[A-Za-z0-9 ]{6,8}$/'],
-            'email' => 'required|email|unique:temp_memb,email',
-            'mobile' => ['required', 'regex:/^(\+44\s?7\d{9}|07\d{9})$/'],
-            'terms' => 'accepted',
+  public function submitForm(Request $request)
+{
+    $request->validate([
+        'title' => 'required|string',
+        'first_name' => 'required|string|max:50',
+        'last_name' => 'required|string|max:50',
+        'house_no' => 'required|string|max:10',
+        'street' => 'required|string|max:50', // Matches your VARCHAR(50)
+        'post_code' => ['required', 'regex:/^[A-Za-z0-9 ]{6,8}$/'],
+        'email' => 'required|email', // Remove 'unique:temp_memb,email'
+        // 'email' => 'required|email|unique:temp_memb,email',
+        'terms' => 'accepted',
+    ]);
+
+
+
+    // Create the membership record
+$temp = TempMemb::create([
+    'title' => $request->title,
+    'first_name' => $request->first_name,
+    'last_name' => $request->last_name,
+    'house_no' => $request->house_no,
+    'street_name' => $request->street,  // Primary street field
+    'street_id' => null,                // Explicit null (now allowed)
+    'line3' => $request->line3,
+    'post_code' => strtoupper(trim($request->post_code)),
+    'email' => $request->email,
+    'mobile' => '',                     // Empty string (from earlier fix)
+    'terms_accepted' => true,
+    'ip_address' => $request->ip(),
+    'user_agent' => $request->userAgent(),
+    'otp' => '', // Empty string instead of null
+]);
+
+return back()
+        ->withInput()  // Preserves form input if validation fails
+        ->with([
+            'show_payment' => true,
+            'payment_url' => 'https://buy.stripe.com/8x27sNaVfdpP0V35odbMQ00'
         ]);
 
-        // $otp = rand(100000, 999999);
-        $otp = 123456;
+//     // Send confirmation email
+//     Mail::to($request->email)->send(new MembershipConfirmation($temp));
+
+//     return redirect()->route('membership.success')->with([
+//         'email' => $request->email,
+//         'payment_url' => 'https://buy.stripe.com/8x27sNaVfdpP0V35odbMQ00'
+//     ]);
+
+// return redirect()->route('membership.success')->with([
+//         'email' => $request->email,
+//         'payment_url' => 'https://buy.stripe.com/8x27sNaVfdpP0V35odbMQ00'
+//     ]);
+
+}
 
 
-        $temp = TempMemb::create([
-            'title' => $request->title,
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'house_no' => $request->house_no,
-            'street_id' => $request->street_id,
-            'line3' => $request->line3,
-            'post_code' => strtoupper(trim($request->post_code)),
-            'email' => $request->email,
-            'mobile' => $request->mobile,
-            'terms_accepted' => true,
-            // 'otp' => Hash::make($otp),
-            'otp' => $otp,
-            'otp_expires_at' => now()->addMinutes(5),
-            'ip_address' => $request->ip(),
-            'user_agent' => $request->userAgent(),
-        ]);
-
-// Mail disabled temporarily due to delivery issues.
-    //   Mail::to($request->email)->send(new SendOtpMail($otp));
-     //print_r($result);exit;
-
-        return view('membership.enter_otp')->with('email', $request->email);
-    }
     
     public function verifyOtp(Request $request)
 {

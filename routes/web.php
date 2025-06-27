@@ -12,8 +12,6 @@ use App\Http\Middleware\BridgeCorePhpSession;
 use App\Http\Controllers\MembershipController;
 
 
-
-
 Route::middleware([IdentifyClient::class, BridgeCorePhpSession::class])->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::post('save-contact-us', [HomeController::class, 'saveContactUs'])->name('save_contact_us');
@@ -22,6 +20,22 @@ Route::middleware([IdentifyClient::class, BridgeCorePhpSession::class])->group(f
 
 Route::get('/membership', [MembershipController::class, 'showForm'])->name('membership.form');
 Route::post('/membership/submit', [MembershipController::class, 'submitForm'])->name('membership.submit');
+
+Route::post('/membership/verify-otp', [MembershipController::class, 'verifyOtp'])->name('membership.verifyOtp');
+Route::post('/membership/resend-otp', [MembershipController::class, 'resendOtp'])->name('membership.resendOtp');
+// Route::get('/membership/confirmed', function () {
+//     return view('membership.confirmed');
+// })->name('membership.confirmed');
+
+Route::get('/membership/success', function () {
+    return view('membership.success');
+})->name('membership.success');
+
+
+
+
+
+require __DIR__ . '/auth.php';
 
 
 Route::get('/{any}', function ($any) {
@@ -50,12 +64,3 @@ Route::get('/{any}', function ($any) {
     abort(404);
 })->where('any', '.*');
 
-Route::post('/membership/verify-otp', [MembershipController::class, 'verifyOtp'])->name('membership.verifyOtp');
-Route::post('/membership/resend-otp', [MembershipController::class, 'resendOtp'])->name('membership.resendOtp');
-Route::get('/membership/confirmed', function () {
-    return view('membership.confirmed');
-})->name('membership.confirmed');
-
-
-
-require __DIR__ . '/auth.php';

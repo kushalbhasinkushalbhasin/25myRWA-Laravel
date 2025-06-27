@@ -74,12 +74,17 @@
               <!--<a class="d-block text-lighter font-weight-bold fs-15 hover-white"-->
 
                 <a class="d-block hover-green text-white" href="mailto:{{app('client')->client_email}}">{{app('client')->client_email}}</a>
+
+              <li class="list-inline-item mr-0">
+                <a href="{{app('client')->client_whatsapp}}" class="whatsapp-green  fs-25 px-4 "><i class="fab fa-whatsapp"></i></a>
+              </li>
+
     
               <a class="d-block  text-white font-weight-bold fs-18 hover-white"
                 href="tel:{{app('client')->client_phone}}">{{app('client')->client_phone}}</a>
-              <a class="d-block  text-white font-weight-bold fs-18 hover-white"
+              <!--<a class="d-block  text-white font-weight-bold fs-18 hover-white"-->
 
-                href="tel:{{app('client')->client_phone}}">{{app('client')->client_phone}}</a>
+              <!--  href="tel:{{app('client')->client_phone}}">{{app('client')->client_phone}}</a>-->
             </div>
           </div>
           @if(0)
@@ -157,31 +162,31 @@
         </div>
         <div class="mt-0 mt-md-10 row">
           <ul class="list-inline mb-0 col-md-10 mr-auto">
-            <li class="list-inline-item mr-6">
-              <a href="/terms_conditions" class="fs-17 text-muted lh-26 font-weight-500 hover-white">Terms of Use</a>
-            </li>
-            <li class="list-inline-item mr-6">
-              <a href="/privacy" class="text-muted lh-26 font-weight-500 hover-white">Privacy Policy</a>
-            </li>
+            <!--<li class="list-inline-item mr-6">-->
+            <!--  <a href="/terms_conditions" class="fs-17 text-muted lh-26 font-weight-500 hover-white">Terms of Use</a>-->
+            <!--</li>-->
+            <!--<li class="list-inline-item mr-6">-->
+            <!--  <a href="/privacy" class="text-muted lh-26 font-weight-500 hover-white">Privacy Policy</a>-->
+            <!--</li>-->
             <!--<li class="list-inline-item mr-6">-->
             <!--  <a href="/refund_policy" class="text-muted lh-26 font-weight-500 hover-white">Refunds</a>-->
             <!--</li>-->
             <!--<li class="list-inline-item mr-6">-->
             <!--  <a href="/cancellation_policy" class="text-muted lh-26 font-weight-500 hover-white">Cancellation</a>-->
             <!--</li>-->
-            <li class="list-inline-item mr-6">
-              <a href="/privacy-disclaimer" class="text-muted lh-26 font-weight-500 hover-white">Disclaimer</a>
-            </li>
+            <!--<li class="list-inline-item mr-6">-->
+            <!--  <a href="/privacy-disclaimer" class="text-muted lh-26 font-weight-500 hover-white">Disclaimer</a>-->
+            <!--</li>-->
             <!--<li class="list-inline-item mr-6">-->
             <!--  <a href="/advertisement" class="text-muted lh-26 font-weight-500 hover-white">Advertise with us</a>-->
             <!--</li>-->
-            <li class="list-inline-item mr-6">
-              <a href="/cookies-privacy" class="text-muted lh-26 font-weight-500 hover-white">Cookies Policy</a>
-            </li>
+            <!--<li class="list-inline-item mr-6">-->
+            <!--  <a href="/cookies-privacy" class="text-muted lh-26 font-weight-500 hover-white">Cookies Policy</a>-->
+            <!--</li>-->
             
           </ul>
           <p class="col-md-auto mb-0 text-muted mt-5 copy-right">
-            © {{date('Y')}} {{app('client')->client_name}}. All Rights Reserved
+            © 2025 Innovatus Solutions. All Rights Reserved
           </p>
         </div>
       </div>

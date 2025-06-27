@@ -11,24 +11,22 @@ class TempMemb extends Model
 
     protected $table = 'temp_memb'; // Explicit table name
 
-    protected $fillable = [
-        'title',
-        'first_name',
-        'last_name',
-        'house_no',
-        'street_id',
-        'line3',
-        'post_code',
-        'email',
-        'mobile',
-        'terms_accepted',
-        'otp',
-        'otp_expires_at',
-        'otp_attempts',
-        'is_verified',
-        'ip_address',
-        'user_agent',
-    ];
+protected $fillable = [
+    'title',
+    'first_name', 
+    'last_name',
+    'house_no',
+    'street_name', // New column
+    'street_id',   // Keep but nullable
+    'line3',
+    'post_code',
+    'email',
+    'mobile',
+    'terms_accepted',
+    'ip_address',
+    'user_agent'
+];
+
 
     protected $casts = [
         'terms_accepted' => 'boolean',

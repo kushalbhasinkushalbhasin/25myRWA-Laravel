@@ -1,0 +1,38 @@
+@extends('layouts.app')
+
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-success text-white">Membership Application Received</div>
+
+                <div class="card-body">
+                    @if (session('email'))
+                        <div class="alert alert-success">
+                            <h4>Thank you for your membership application!</h4>
+                            <p>A confirmation email has been sent to {{ session('email') }}.</p>
+                            
+                            <div class="mt-4">
+                                <h5>Next Steps:</h5>
+                                <p>Please complete your membership by making the £3 payment:</p>
+                                <a href="{{ session('payment_url') }}" class="btn btn-primary btn-lg">
+                                    Pay Membership Fee Now
+                                </a>
+                            </div>
+                            
+                            <div class="mt-4 small text-muted">
+                                If you're not redirected automatically, please click the button above.
+                            </div>
+                        </div>
+                    @else
+                        <div class="alert alert-danger">
+                            No submission data found. Please complete the membership form.
+                        </div>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection

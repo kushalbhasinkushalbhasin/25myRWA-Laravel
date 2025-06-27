@@ -3,10 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>CHWRA Membership Enrolment</title>
+    
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     {{-- Bootstrap 5 --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<!-- Bootstrap JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 
     <style>
         body {
@@ -14,7 +23,7 @@
         }
         label, .form-check-label, .form-text {
             color: #4CAF50;
-            font-weight: 400 !important; /* ~75% font weight */
+            font-weight: 400 !important;
         }
         .form-control, .form-select {
             background-color: #f4f4f4;
@@ -41,15 +50,56 @@
         }
     </style>
 </head>
+
+@if(session('show_payment'))
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Smooth scroll to top to ensure visibility
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+    
+    // Optional: Auto-hide after 1 minute
+    setTimeout(() => {
+        const alert = document.querySelector('.alert');
+        if (alert) alert.style.display = 'none';
+    }, 60000);
+});
+</script>
+@endif
+
+
 <body>
+
+{{-- Payment Link Banner --}}
+@if(session('show_payment'))
+<div class="alert alert-success alert-dismissible fade show sticky-top" role="alert" style="z-index: 9999;">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+                <i class="fas fa-check-circle me-2"></i>
+                <strong>Membership request submitted!</strong> Please complete with the payment of annual membership fees of GBP 3 only. 
+                Please enter your email ID, Name and House details as here on to the stripe link</div>
+            <div>
+                <a href="{{ session('payment_url') }}" class="btn btn-sm btn-primary me-2">
+                    <i class="fas fa-credit-card me-1"></i> Pay Now (£3)
+                </a>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+</div>
+@endif
+
 
 <div class="container mt-5 mb-5" style="max-width: 720px;">
     
     @if (session('success'))
-  <div class="success" style="background-color: #e0f7e0; border: 1px solid #c8e6c9; color: #2e7d32; padding: 10px; margin-bottom: 15px; border-radius: 6px;">
-    {{ session('success') }}
-  </div>
-@endif
+        <div class="success" style="background-color: #e0f7e0; border: 1px solid #c8e6c9; color: #2e7d32; padding: 10px; margin-bottom: 15px; border-radius: 6px;">
+            {{ session('success') }}
+        </div>
+    @endif
 
     <div class="card shadow border-0">
         <div class="card-header text-white text-center" style="background-color: #4CAF50;">
@@ -58,7 +108,7 @@
 
         <div class="card-body p-4">
 
-            @if ($errors->any())
+            @if ($errors->any()))
                 <div class="alert alert-danger">
                     <ul class="mb-0 small">
                         @foreach ($errors->all() as $error)
@@ -70,6 +120,10 @@
 
             <form method="POST" action="{{ route('membership.submit') }}" id="membershipForm" novalidate>
                 @csrf
+
+                <div class="col-md-5">
+                    <div class="text-center fs-6 fw-normal text-black">Annual Membership GBP 3</div>
+                </div>
 
                 {{-- Title + First Name --}}
                 <div class="row mb-3">
@@ -107,15 +161,11 @@
                             <label for="house_no">House No.</label>
                         </div>
                     </div>
+                    
                     <div class="col-md-8">
                         <div class="form-floating">
-                            <input list="streetOptions" name="street_id" id="street_id" class="form-control" placeholder="Street" required>
-                            <label for="street_id">Street</label>
-                            <datalist id="streetOptions">
-                                @foreach($streets as $street)
-                                    <option value="{{ $street->id }}">{{ $street->name }}</option>
-                                @endforeach
-                            </datalist>
+                            <input type="text" class="form-control" id="street" name="street" placeholder="Street Name" value="{{ old('street') }}" required>
+                            <label for="street">Street Name</label>
                         </div>
                     </div>
                 </div>
@@ -148,12 +198,6 @@
                     <label for="email">Email Address</label>
                 </div>
 
-                {{-- Mobile --}}
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="mobile" name="mobile" placeholder="Mobile Number" value="{{ old('mobile') }}" required maxlength="14">
-                    <label for="mobile">Mobile Number (+44)</label>
-                </div>
-
                 {{-- Meeting Attendance Toggle --}}
                 <div class="form-check form-switch mt-4 mb-3">
                     <input class="form-check-input" type="checkbox" name="meeting_attendance" id="meeting_attendance" value="able" checked>
@@ -168,7 +212,7 @@
                     style="
                         width: 1.2em;
                         height: 1.2em;
-                        border: 3px solid #000 !important; /* Thick black border */
+                        border: 3px solid #000 !important;
                         border-radius: 0.25em;
                         cursor: pointer;
                         appearance: none;
@@ -178,15 +222,17 @@
                     onchange="this.style.backgroundColor = this.checked ? '#000' : ''"
                     >
                     <label class="form-check-label small" for="terms">
-                          By submitting this form, you agree to our
-                        <a href="/terms" target="_blank">Terms & Conditions</a>,
-                        <a href="/privacy" target="_blank">Privacy Policy</a>, and
-                        <a href="/cookies" target="_blank">Cookie Policy</a>.
+                    Yes I would like to join the association. 
+                        <!--By submitting this form, you agree to our-->
+                        <!--<a href="/terms" target="_blank">Terms & Conditions</a>,-->
+                        <!--<a href="/privacy" target="_blank">Privacy Policy</a>, and-->
+                        <!--<a href="/cookies" target="_blank">Cookie Policy</a>.-->
                     </label>
                 </div>
 
                 {{-- Submit --}}
-                <button type="submit" class="submit-button">Submit and Receive OTP</button>
+                <button type="submit" class="submit-button">Submit </button>
+            <!--and Receive OTP-->
             </form>
         </div>
     </div>
@@ -194,16 +240,10 @@
 
 <script>
 document.getElementById('membershipForm').addEventListener('submit', function(e) {
-    const mobile = document.getElementById('mobile').value.trim();
     const postCode = document.getElementById('post_code').value.trim();
-    const mobilePattern = /^(\+44\s?7\d{9}|07\d{9})$/;
     const postCodePattern = /^[A-Za-z0-9 ]{6,8}$/;
 
     let error = '';
-
-    if (!mobilePattern.test(mobile)) {
-        error += 'Invalid mobile number. Must be +44 or 07 followed by 9 digits.\n';
-    }
 
     if (!postCodePattern.test(postCode)) {
         error += 'Invalid postcode. Must be 6–8 alphanumeric characters.\n';

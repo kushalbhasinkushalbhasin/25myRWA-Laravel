@@ -36,67 +36,67 @@ design for sections of home page - sourced from themeforest. Modified for our fo
   </section>
 @endif
   
-@if(in_array('home-contact-us', $home_sections))
-    <section class="bg-gray-02 bg-black pt-9 pb-9" id="contact-us-sections" style='background-color:#fff!important;'>
-      <div class="container">
-        <h2 class="text-center  line-height-base head-contact-us">
-          Contact Us Not 
-        </h2>
-        <span class="heading-divider mx-auto mb-7"></span>
-        <h5 class="text-center text-white">Drop us a line!</h5>
-        <div class="row">
-          <div class="col-md-2"></div>
-            <div class='col-md-8'>
-            <form action="{{ route('save_contact_us') }}" method="post">
-              @csrf
-              <div class="row">
+<!--@if(in_array('home-contact-us', $home_sections))-->
+<!--    <section class="bg-gray-02 bg-black pt-9 pb-9" id="contact-us-sections" style='background-color:#fff!important;'>-->
+<!--      <div class="container">-->
+<!--        <h2 class="text-center  line-height-base head-contact-us">-->
+<!--          Contact Us -->
+<!--        </h2>-->
+<!--        <span class="heading-divider mx-auto mb-7"></span>-->
+<!--        <h5 class="text-center text-white">Drop us a line!</h5>-->
+<!--        <div class="row">-->
+<!--          <div class="col-md-2"></div>-->
+<!--            <div class='col-md-8'>-->
+<!--            <form action="{{ route('save_contact_us') }}" method="post">-->
+<!--              @csrf-->
+<!--              <div class="row">-->
 
-                  <div class="col-md-12 mt-5">
-                      <input
-                          type="text"
-                          placeholder="Name"
-                          class="form-control form-control-lg home-contact-form-control  @error('name') is-invalid @enderror"
-                          name="name"
-                          value="{{ old('name') }}"
-                          required
-                      >
-                      @error('name')
-                          <div class="invalid-feedback d-block">
-                              {{ $message }}
-                          </div>
-                      @enderror
-                  </div>
+<!--                  <div class="col-md-12 mt-5">-->
+<!--                      <input-->
+<!--                          type="text"-->
+<!--                          placeholder="Name"-->
+<!--                          class="form-control form-control-lg home-contact-form-control  @error('name') is-invalid @enderror"-->
+<!--                          name="name"-->
+<!--                          value="{{ old('name') }}"-->
+<!--                          required-->
+<!--                      >-->
+<!--                      @error('name')-->
+<!--                          <div class="invalid-feedback d-block">-->
+<!--                              {{ $message }}-->
+<!--                          </div>-->
+<!--                      @enderror-->
+<!--                  </div>-->
 
-                  <div class="col-md-12 mt-5">
-                      <input
-                          type="text"
-                          placeholder="Email"
-                          class="form-control form-control-lg home-contact-form-control @error('email') is-invalid @enderror"
-                          name="email"
-                          value="{{ old('email') }}"
-                          required
-                      >
-                      @error('email')
-                          <div class="invalid-feedback d-block">
-                              {{ $message }}
-                          </div>
-                      @enderror
-                  </div>
+<!--                  <div class="col-md-12 mt-5">-->
+<!--                      <input-->
+<!--                          type="text"-->
+<!--                          placeholder="Email"-->
+<!--                          class="form-control form-control-lg home-contact-form-control @error('email') is-invalid @enderror"-->
+<!--                          name="email"-->
+<!--                          value="{{ old('email') }}"-->
+<!--                          required-->
+<!--                      >-->
+<!--                      @error('email')-->
+<!--                          <div class="invalid-feedback d-block">-->
+<!--                              {{ $message }}-->
+<!--                          </div>-->
+<!--                      @enderror-->
+<!--                  </div>-->
 
-                  <div class="col-md-12 mt-5">
-                      <textarea
-                          placeholder="Message"
-                          class="form-control form-control-lg home-contact-form-control @error('message') is-invalid @enderror"
-                          name="message"
-                          rows="5"
-                          required
-                      >{{ old('message') }}</textarea>
-                      @error('message')
-                          <div class="invalid-feedback d-block">
-                              {{ $message }}
-                          </div>
-                      @enderror
-                  </div>
+<!--                  <div class="col-md-12 mt-5">-->
+<!--                      <textarea-->
+<!--                          placeholder="Message"-->
+<!--                          class="form-control form-control-lg home-contact-form-control @error('message') is-invalid @enderror"-->
+<!--                          name="message"-->
+<!--                          rows="5"-->
+<!--                          required-->
+<!--                      >{{ old('message') }}</textarea>-->
+<!--                      @error('message')-->
+<!--                          <div class="invalid-feedback d-block">-->
+<!--                              {{ $message }}-->
+<!--                          </div>-->
+<!--                      @enderror-->
+<!--                  </div>-->
 
                   <!--<div class="col-md-12 mt-5">-->
                   <!--    <input-->
@@ -117,24 +117,24 @@ design for sections of home page - sourced from themeforest. Modified for our fo
                   <!--    @enderror-->
                   <!--</div>-->
 
-                  <div class="col-md-12 mt-5">
-                    @if (session('success'))
-                      <div class="alert alert-success">
-                        {{ session('success') }}
-                      </div>
-                    @endif
-                      <button type="submit" class="btn btn-drk-orange btn-lg float-right min-w-100">Send Message</button>
-                  </div>
+<!--                  <div class="col-md-12 mt-5">-->
+<!--                    @if (session('success'))-->
+<!--                      <div class="alert alert-success">-->
+<!--                        {{ session('success') }}-->
+<!--                      </div>-->
+<!--                    @endif-->
+<!--                      <button type="submit" class="btn btn-drk-orange btn-lg float-right min-w-100">Send Message</button>-->
+<!--                  </div>-->
 
-              </div>
-            </form>
-            </div>
-            <div class="col-md-2"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-  @endif
+<!--              </div>-->
+<!--            </form>-->
+<!--            </div>-->
+<!--            <div class="col-md-2"></div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </section>-->
+<!--  @endif-->
 
 @if(0)
   <section class="pt-9 pb-9 pb-lg-11">
